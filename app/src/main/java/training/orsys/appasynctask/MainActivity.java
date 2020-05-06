@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(500);
 
-                    // tv.setText( String.valueOf(t) );
+                    // tv.setText( String.valueOf(t) ); // KO
 
                     publishProgress(t);
                 } catch (InterruptedException e) {
