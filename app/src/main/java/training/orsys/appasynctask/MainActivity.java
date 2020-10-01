@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     // 2. Le seul thread qui peut rafraichir l'UI est le thread UI, encore appelé main thread
     class Compteur extends AsyncTask<Void, Integer, Void> {
         TextView tv = null;
-        long temps;
+        long temps = 0;
 
         @Override
         protected void onPreExecute() { // thread UI
