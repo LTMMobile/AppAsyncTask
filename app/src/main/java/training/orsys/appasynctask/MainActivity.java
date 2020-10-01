@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity {
         new Compteur().execute();
     }
 
+    // Deux règles de base importantes en Android :
+    // 1. Les tâches longues sous Android doivent être lançées dans un worker thread
+    // 2. Le seul thread qui peut rafraichir l'UI est le thread UI, encore appelé main thread
     class Compteur extends AsyncTask<Void, Integer, Void> {
-
         TextView tv = null;
         long temps;
 
@@ -37,10 +39,8 @@ public class MainActivity extends AppCompatActivity {
             for(int t = 0; t < 10; t++) {
                 try {
                     Thread.sleep(500);
-
-                    // tv.setText( String.valueOf(t) ); // KO
-
-                    publishProgress(t);
+                    //tv.setText( String.valueOf(t) ); // KO
+                    publishProgress(t); // il appelle onProgressUpdate(Integer... values) automatiquement
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
